@@ -125,7 +125,7 @@ And we see `Hello, from the function!` is returned.
 
 #### Download and Run Apache Tomcat
 
-Download Apache Tomcat 10 from [here](https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.22/bin/apache-tomcat-10.0.22.tar.gz).
+Download Apache Tomcat 9 from [here](https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz).
 
 Create a directory name `tomcat` and unzip the file to that directory.
 
@@ -146,9 +146,9 @@ Build the project:
 mvn package
 ```
 
-Next, copy the WAR file from `target/springboot-function.war` to the `tomcat/apache-tomcat-10.0.22/webapps/` folder.
+Next, copy the WAR file from `target/springboot-function.war` to the `tomcat/apache-tomcat-9.0.64/webapps/` folder.
 
-From a terminal, navigate to the `tomcat/apache-tomcat-10.0.22/bin` folder and execute:
+From a terminal, navigate to the `tomcat/apache-tomcat-9.0.64/bin` folder and execute:
 
 ```
 catalina.sh run

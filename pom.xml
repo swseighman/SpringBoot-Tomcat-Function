@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>springboot-function</artifactId>
+	<artifactId>SpringBootFunction</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<!-- <packaging>jar</packaging> -->
@@ -51,6 +51,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.opoo.maven</groupId>
+				<artifactId>tomcat9-maven-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<url>http://localhost:8082/manager/text</url>
+					<server>TomcatServer</server>
+					<path>/hello</path>
+				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>${project.artifactId}</finalName>
