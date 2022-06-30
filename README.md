@@ -135,10 +135,10 @@ Create a directory name `tomcat` and unzip the file to that directory.
 Clone the repository and `cd` to the `SpringBootWeb` directory:
 
 ```
-git clone 
+git clone https://github.com/swseighman/SpringBoot-Tomcat-Function
 ```
 ```
-cd SpringBootWeb
+cd SpringBoot-Tomcat-Function
 ```
 
 Build the project:
