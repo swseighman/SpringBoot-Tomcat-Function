@@ -6,8 +6,8 @@
 	<groupId>com.example</groupId>
 	<artifactId>springboot-function</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<!-- <packaging>war</packaging> -->
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
+	<!-- <packaging>jar</packaging> -->
 
 	<name>springboot-function</name>
 	<description>Call a Function from Spring Boot</description>
