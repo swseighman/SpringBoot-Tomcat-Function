@@ -146,7 +146,7 @@ Build the project:
 mvn package
 ```
 
-Next, copy the WAR file from `target/SpringBootWeb.war` to the `tomcat/apache-tomcat-10.0.22/webapps/` folder.
+Next, copy the WAR file from `target/springboot-function.war` to the `tomcat/apache-tomcat-10.0.22/webapps/` folder.
 
 From a terminal, navigate to the `tomcat/apache-tomcat-10.0.22/bin` folder and execute:
 
@@ -158,11 +158,11 @@ The Tomcat server will be started and the sample application will be deployed.
 
 #### Testing the Sample Application
 
-To test the application, browse to [http://localhost:8080/SpringBootWeb/hello](http://localhost:8080/SpringBootWeb/hello)
+To test the application, browse to [http://localhost:8080/springboot-function/hello](http://localhost:8080/springboot-function/hello)
 
 `Hello!` will be displayed in the browser.
 
-Next, we'll call the function we created earlier. Browse to [http://localhost:8080/SpringBootWeb/callfunction](http://localhost:8080/SpringBootWeb/callfunction)
+Next, we'll call the function we created earlier. Browse to [http://localhost:8080/springboot-function/callfunction](http://localhost:8080/springboot-function/callfunction)
 
 The browser will display `Hello, from the function!`.
 
