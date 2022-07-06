@@ -59,7 +59,7 @@
 				<configuration>
 					<url>http://localhost:8082/manager/text</url>
 					<server>TomcatServer</server>
-					<path>/hello</path>
+					<path>/SpringBootFunction</path>
 				</configuration>
 			</plugin>
 		</plugins>

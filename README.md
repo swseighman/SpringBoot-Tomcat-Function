@@ -129,10 +129,33 @@ Download Apache Tomcat 9 from [here](https://dlcdn.apache.org/tomcat/tomcat-9/v9
 
 Create a directory name `tomcat` and unzip the file to that directory.
 
+Edit the `settings.xml` file and add the following server information in the `<servers>` section.  The file will be located in either the `$MAVEN_HOME/conf` directory or `$HOME/.m2` directory.
+
+```
+  <servers>
+    <server>
+      <id>TomcatServer</id>
+      <username>admin</username>
+      <password>password</password>
+    </server>
+  </servers>
+```
+
+In addtion, edit the `$CATALINA_HOME/conf/tomcat-users.xml` file and add the following:
+
+```
+  <role rolename="manager"/>
+  <role rolename="admin-gui"/>
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <user username="admin" password="password" roles="manager, admin-gui, manager-gui, manager-script"/>
+```
+  
+   
 
 #### Build and Deploy a Sample Application
 
-Clone the repository and `cd` to the `SpringBootWeb` directory:
+Clone the repository and `cd` to the `SpringBoot-Tomcat-Function` directory:
 
 ```
 git clone https://github.com/swseighman/SpringBoot-Tomcat-Function
@@ -142,6 +165,7 @@ cd SpringBoot-Tomcat-Function
 ```
 
 Build the project:
+
 ```
 mvn package
 ```
@@ -155,6 +179,69 @@ catalina.sh run
 ```
 
 The Tomcat server will be started and the sample application will be deployed.
+
+**Deploy Using Maven**
+
+Add the following plugin to the `pom.xml` file:
+
+```
+<plugin>
+	<groupId>org.opoo.maven</groupId>
+	<artifactId>tomcat9-maven-plugin</artifactId>
+	<version>3.0.1</version>
+	<configuration>
+		<url>http://localhost:8082/manager/text</url>
+		<server>TomcatServer</server>
+		<path>/SpringBootFunction</path>
+	</configuration>
+</plugin>
+```
+
+Deploy the application/war:
+
+```
+mvn tomcat9:deploy
+```
+```
+... <snip>
+[INFO] --- tomcat9-maven-plugin:3.0.1:deploy (default-cli) @ SpringBootFunction ---
+[INFO] Deploying war to http://localhost:8082/SpringBootFunction
+Uploading: http://localhost:8082/manager/text/deploy?path=%2FSpringBootFunction
+Uploaded: http://localhost:8082/manager/text/deploy?path=%2FSpringBootFunction (18676 KB at 105510.1 KB/sec)
+
+[INFO] tomcatManager status code:200, ReasonPhrase:
+[INFO] OK - Deployed application at context path [/SpringBootFunction]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.758 s
+[INFO] Finished at: 2022-07-06T11:55:48-04:00
+[INFO] ------------------------------------------------------------------------
+```
+
+To undeploy the app/war:
+
+```
+mvn tomcat9:undeploy
+```
+
+```
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------< com.example:SpringBootFunction >-------------------
+[INFO] Building springboot-function 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO]
+[INFO] --- tomcat9-maven-plugin:3.0.1:undeploy (default-cli) @ SpringBootFunction ---
+[INFO] Undeploying application at http://localhost:8082/SpringBootFunction
+[INFO] OK - Undeployed application at context path [/SpringBootFunction]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.367 s
+[INFO] Finished at: 2022-07-06T12:14:23-04:00
+[INFO] ------------------------------------------------------------------------
+```
 
 #### Testing the Sample Application
 
